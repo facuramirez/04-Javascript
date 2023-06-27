@@ -4,7 +4,7 @@ const empresas = [
   {
     nombre: "Empresa1",
     informacion: {
-      empleados: 75,
+      empleados: 71,
       direccion: {
         calle: "Av.San Luis",
         numero: 293,
@@ -82,7 +82,7 @@ const empresas = [
   {
     nombre: "Empresa3",
     informacion: {
-      empleados: 70,
+      empleados: 72,
       direccion: {
         calle: "Av.Lopez Torres",
         numero: 934,
