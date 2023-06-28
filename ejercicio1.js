@@ -131,3 +131,23 @@ const empresas = [
 //* Se solicita que la función creada, al pasarle ambos parámetros, nos devuelva un booleano indicando si la cantidad de empleados total indicada en la empresa elegida es igual a la cantidad
 //* de empleados de todos sus locales. En caso afirmativo retornar true, sino retornar false.
 //* En caso de no encontrar la empresa solicitada, retornar un string que diga "Empresa no encontrada"
+
+function verificarCantidadEmpleados(empresas, nombre) {
+  const empresa = empresas.find((item) => item.nombre === nombre);
+
+  if (!empresa) return "Empresa no encontrada";
+
+  const { locales } = empresa.informacion;
+
+  const empleados = Object.values(locales).map((item) => item.empleados);
+
+  return (
+    empleados.reduce((acum, value) => acum + value) ===
+    empresa.informacion.empleados
+  );
+}
+
+console.log(verificarCantidadEmpleados(empresas, "Empresa1"));
+console.log(verificarCantidadEmpleados(empresas, "Empresa2"));
+console.log(verificarCantidadEmpleados(empresas, "Empresa3"));
+console.log(verificarCantidadEmpleados(empresas, "Empresa4"));

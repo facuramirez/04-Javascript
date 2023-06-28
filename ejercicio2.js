@@ -135,3 +135,29 @@ const empresas = [
 //*   }
 //* ]
 //* donde "nombre" es un string con el nombre de la empresa, y "seccionesSinLocal" es un arreglo de strings con el nombre de la sección o los nombres de las secciones que no tengan asignado un local
+
+function obtenerInformacion(arreglo) {
+  return arreglo.map((empresa) => {
+    const {
+      nombre,
+      informacion: { secciones, locales },
+    } = empresa;
+
+    const localesEntries = Object.values(locales);
+
+    const seccionesIncluidas = localesEntries.map(
+      (local) => local.especificaciones.nombre
+    );
+
+    const seccionesSinLocal = secciones.filter(
+      (seccion) => !seccionesIncluidas.includes(seccion)
+    );
+
+    return {
+      empresa: nombre,
+      seccionesSinLocal,
+    };
+  });
+}
+
+console.log(obtenerInformacion(empresas));
